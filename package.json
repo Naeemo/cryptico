@@ -1,9 +1,11 @@
 {
-  "name": "cryptico",
+  "name": "cryptico.js",
   "version": "1.0.0",
   "description": "Repo(https://github.com/wwwtyro/cryptico)'s refactor.",
   "main": "src/api.js",
   "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -cw",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/Naeemo/cryptico/issues"
   },
-  "homepage": "https://github.com/Naeemo/cryptico#readme"
+  "homepage": "https://github.com/Naeemo/cryptico#readme",
+  "devDependencies": {
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^2.5.0"
+  }
 }
