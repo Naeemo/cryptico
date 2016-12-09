@@ -6,8 +6,8 @@ const commonjs = require('rollup-plugin-commonjs');
 const uglify = require('rollup-plugin-uglify');
 
 module.exports = {
-    entry: 'src/cryptico.js',
-    dest: 'dist/cryptico.js',
+    entry: 'dist/cryptico.js',
+    dest: 'dist/cryptico.min.js',
     format: 'umd',
     moduleName: 'cryptico',
     plugins: [
