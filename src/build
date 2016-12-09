@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+cat jsbn.js random.js hash.js rsa.js aes.js api.js > cryptico.js
+

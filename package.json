@@ -2,7 +2,7 @@
   "name": "cryptico.js",
   "version": "1.0.0",
   "description": "Repo(https://github.com/wwwtyro/cryptico)'s refactor.",
-  "main": "src/api.js",
+  "main": "dist/cryptico.js",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
