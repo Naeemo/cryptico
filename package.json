@@ -1,0 +1,30 @@
+{
+  "name": "cryptico.js",
+  "version": "1.1.0",
+  "description": "Repo(https://github.com/wwwtyro/cryptico)'s refactor.",
+  "main": "dist/cryptico.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -cw",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naeemo/cryptico.git"
+  },
+  "keywords": [
+    "browser-rsa"
+  ],
+  "author": "wwwtyro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naeemo/cryptico/issues"
+  },
+  "homepage": "https://github.com/Naeemo/cryptico#readme",
+  "devDependencies": {
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^2.5.0"
+  }
+}
