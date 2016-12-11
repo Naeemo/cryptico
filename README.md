@@ -1,5 +1,10 @@
 # cryptico
 
+## build
+
+1. src/build
+2. rollup -c
+
 ## Overview
 
 ### Generating an RSA key pair & public key string
