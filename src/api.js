@@ -1,3 +1,9 @@
+var RSAKey = require('./rsa');
+var hash = require('./hash');
+var aes = require('./aes');
+var random = require('./random');
+var jsbn = require('./jsbn');
+
 var cryptico = (function () {
 
     var my = {};
@@ -91,28 +97,28 @@ var cryptico = (function () {
             var v = base64Chars.indexOf(s.charAt(i));
             if (v < 0) continue;
             if (k == 0) {
-                ret += int2char(v >> 2);
+                ret += jsbn.int2char(v >> 2);
                 slop = v & 3;
                 k = 1;
             }
             else if (k == 1) {
-                ret += int2char((slop << 2) | (v >> 4));
+                ret += jsbn.int2char((slop << 2) | (v >> 4));
                 slop = v & 0xf;
                 k = 2;
             }
             else if (k == 2) {
-                ret += int2char(slop);
-                ret += int2char(v >> 2);
+                ret += jsbn.int2char(slop);
+                ret += jsbn.int2char(v >> 2);
                 slop = v & 3;
                 k = 3;
             }
             else {
-                ret += int2char((slop << 2) | (v >> 4));
-                ret += int2char(v & 0xf);
+                ret += jsbn.int2char((slop << 2) | (v >> 4));
+                ret += jsbn.int2char(v & 0xf);
                 k = 0;
             }
         }
-        if (k == 1) ret += int2char(slop << 2);
+        if (k == 1) ret += jsbn.int2char(slop << 2);
         return ret;
     };
 
@@ -145,7 +151,7 @@ var cryptico = (function () {
 
     // Returns a 16-byte initialization vector.
     my.blockIV = function () {
-        var r = new SecureRandom();
+        var r = new random.SecureRandom();
         var IV = new Array(16);
         r.nextBytes(IV);
         return IV;
@@ -221,14 +227,14 @@ var cryptico = (function () {
     // Generate a random key for the AES-encrypted message.
     my.generateAESKey = function () {
         var key = new Array(32);
-        var r = new SecureRandom();
+        var r = new random.SecureRandom();
         r.nextBytes(key);
         return key;
     };
 
     // Generates an RSA key from a passphrase.
     my.generateRSAKey = function (passphrase, bitlength) {
-        Math.seedrandom(sha256.hex(passphrase));
+        Math.seedrandom(hash.sha256.hex(passphrase));
         var rsa = new RSAKey();
         rsa.generate(bitlength, "03");
         return rsa;
@@ -241,7 +247,7 @@ var cryptico = (function () {
 
     // Returns an MD5 sum of a publicKeyString for easier identification.
     my.publicKeyID = function (publicKeyString) {
-        return MD5(publicKeyString);
+        return hash.MD5(publicKeyString);
     };
 
     my.publicKeyFromString = function (string) {

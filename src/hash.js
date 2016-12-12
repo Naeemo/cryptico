@@ -564,3 +564,8 @@ var MD5 = function (string) {
 
 };
 
+module.exports = {
+    MD5: MD5,
+    sha256: sha256,
+    sha1: sha1
+};

@@ -168,3 +168,5 @@ var aes = (function () {
     return my;
 
 }());
+
+module.exports = aes;

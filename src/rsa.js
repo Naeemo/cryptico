@@ -2,6 +2,10 @@
 // Version 1.1: support utf-8 encoding in pkcs1pad2
 // convert a (hex) string to a bignum object
 
+var jsbn = require('./jsbn');
+var hash = require('./hash');
+var random = require('./random');
+var BigInteger = jsbn.BigInteger;
 
 function parseBigInt(str, r) {
     return new BigInteger(str, r);
@@ -49,7 +53,7 @@ function pkcs1pad2(s, n) {
         }
     }
     ba[--n] = 0;
-    var rng = new SecureRandom();
+    var rng = new random.SecureRandom();
     var x = [];
     while (n > 2) { // random non-zero pad
         x[0] = 0;
@@ -173,7 +177,7 @@ function RSASetPrivateEx(N, E, D, P, Q, DP, DQ, C) {
 
 // Generate a new random private key B bits long, using public expt E
 function RSAGenerate(B, E) {
-    var rng = new SeededRandom();
+    var rng = new random.SeededRandom();
     var qs = B >> 1;
     this.e = parseInt(E, 16);
     var ee = new BigInteger(E, 16);
@@ -270,8 +274,8 @@ _RSASIGN_DIHEAD['sha256'] = "3031300d060960864801650304020105000420";
 //_RSASIGN_DIHEAD['sha384'] = "3041300d060960864801650304020205000430";
 //_RSASIGN_DIHEAD['sha512'] = "3051300d060960864801650304020305000440";
 var _RSASIGN_HASHHEXFUNC = [];
-_RSASIGN_HASHHEXFUNC['sha1'] = sha1.hex;
-_RSASIGN_HASHHEXFUNC['sha256'] = sha256.hex;
+_RSASIGN_HASHHEXFUNC['sha1'] = hash.sha1.hex;
+_RSASIGN_HASHHEXFUNC['sha256'] = hash.sha256.hex;
 
 // ========================================================================
 // Signature Generation
@@ -289,7 +293,7 @@ function _rsasign_getHexPaddedDigestInfoForString(s, keySize, hashAlg) {
     for (var i = 0; i < fLen; i += 2) {
         sMid += "ff";
     }
-    sPaddedMessageHex = sHead + sMid + sTail;
+    var sPaddedMessageHex = sHead + sMid + sTail;
     return sPaddedMessageHex;
 }
 
@@ -386,3 +390,4 @@ RSAKey.prototype.verifyString = _rsasign_verifyString;
 RSAKey.prototype.verifyHexSignatureForMessage = _rsasign_verifyHexSignatureForMessage;
 
 
+module.exports = RSAKey;

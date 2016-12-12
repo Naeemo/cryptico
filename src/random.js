@@ -427,3 +427,7 @@ function SecureRandom() { }
 SecureRandom.prototype.nextBytes = rng_get_bytes;
 
 
+module.exports = {
+    SeededRandom: SeededRandom,
+    SecureRandom: SecureRandom
+};

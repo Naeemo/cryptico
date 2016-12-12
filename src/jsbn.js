@@ -1563,3 +1563,7 @@ BigInteger.prototype.isProbablePrime = bnIsProbablePrime;
 // JSBN-specific extension
 BigInteger.prototype.square = bnSquare;
 
+module.exports = {
+    BigInteger: BigInteger,
+    int2char: int2char
+};
