@@ -6,6 +6,8 @@ var cryptico = (function () {
 
     var base64Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
+    my.RSAKey = RSAKey;
+
     my.b256to64 = function (t) {
         var a, c, n;
         var r = '', l = 0, s = 0;
@@ -86,7 +88,7 @@ var cryptico = (function () {
         var slop;
         for (i = 0; i < s.length; ++i) {
             if (s.charAt(i) == "=") break;
-            v = base64Chars.indexOf(s.charAt(i));
+            var v = base64Chars.indexOf(s.charAt(i));
             if (v < 0) continue;
             if (k == 0) {
                 ret += int2char(v >> 2);
@@ -308,53 +310,4 @@ var cryptico = (function () {
 
 }());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = cryptico;
