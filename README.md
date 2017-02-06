@@ -2,8 +2,9 @@
 
 ## build
 
-1. src/build
-2. rollup -c
+```
+rollup -c
+```
 
 ## Overview
 
