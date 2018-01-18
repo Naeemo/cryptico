@@ -8,5 +8,4 @@
 out
 gen
 .gitignore
-.idea/
 node_modules/
