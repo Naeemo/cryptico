@@ -1,5 +1,20 @@
 # cryptico
 
+[![NPM version][npm-image]][npm-url]
+
+[npm-image]: https://img.shields.io/npm/v/cryptico.js.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/cryptico.js
+
+## Install
+
+```bash
+yarn add cryptico.js
+```
+or
+```
+npm i cryptico.js
+```
+
 ## build
 
 ```
